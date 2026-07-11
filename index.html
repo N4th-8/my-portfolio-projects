@@ -44,49 +44,129 @@
             display: flex;
             gap: 40px;
             margin-bottom: 60px;
-            align-items: flex-start;
+            align-items: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
         }
 
         .secondary-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+            margin-bottom: 40px;
         }
 
         .card {
+            display: flex;
+            flex-direction: column;
             background: #ffffff;
             padding: 40px;
             border-radius: 20px;
             border: 1px solid #e2e8f0;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             border-color: #d4af37;
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.05);
         }
 
         h3 {
             color: #d4af37;
             font-size: 1.6em;
             margin-top: 0;
+            margin-bottom: 15px;
         }
 
         p {
             font-size: 1.1em;
             line-height: 1.8;
             color: #475569;
+            margin-bottom: 20px;
+        }
+
+        /* Interactive Scrollable Screenshot Container */
+        .screenshot-container {
+            width: 100%;
+            height: 250px;
+            overflow-y: auto; /* Enables vertical scrolling for long pages */
+            overflow-x: hidden;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Custom scrollbar styling to match aesthetics */
+        .screenshot-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .screenshot-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .screenshot-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .screenshot-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .project-screenshot {
+            width: 100%;
+            height: auto; /* Lets the full page image render completely */
+            display: block;
+        }
+
+        .btn-container {
+            margin-top: auto;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 20px;
             padding: 12px 24px;
             background: #d4af37;
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:hover {
+            background: #b5922f;
+            transform: scale(1.02);
+        }
+
+        /* Assignment AI Disclosure Statement */
+        .ai-box {
+            margin-top: 50px;
+            padding: 24px;
+            background: rgba(248, 250, 252, 0.8);
+            border-left: 4px solid #d4af37;
+            font-size: 0.9em;
+            color: #475569;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .main-project {
+                flex-direction: column;
+            }
+            .secondary-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 15px;
+            }
+            .content-wrapper {
+                padding: 30px;
+            }
         }
     </style>
 </head>
@@ -97,9 +177,10 @@
     <div class="content-wrapper">
         <h1>Project Portfolio</h1>
 
+        <!-- Video Highlight Section -->
         <div class="main-project">
-            <div style="flex: 1;">
-                <iframe width="100%" height="300" src="https://www.youtube.com/embed/GbA9Xdsoirw" frameborder="0" allowfullscreen style="border-radius:15px;"></iframe>
+            <div style="flex: 1; width: 100%;">
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/GbA9Xdsoirw" frameborder="0" allowfullscreen style="border-radius:15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"></iframe>
             </div>
             <div style="flex: 1.2;">
                 <h3>Physics Motion Analysis</h3>
@@ -107,19 +188,40 @@
             </div>
         </div>
 
+        <!-- Project Grid -->
         <div class="secondary-grid">
+            <!-- eCommerce Interface -->
             <div class="card">
                 <h3>eCommerce Web Interface</h3>
+                <div class="screenshot-container">
+                    <img src="https://i.imgur.com/PJmkgrx.png" alt="eCommerce Web Interface Full Screen Layout" class="project-screenshot">
+                </div>
                 <p>A foundational web development project demonstrating proficiency in HTML5 structural design and form management. The site facilitates a simulated shopping experience, focusing on clean layout and efficient data flow between user inputs and backend logic.</p>
-                <a href="Nathan/index.html" class="btn" target="_blank">View Project</a>            </div>
+                <div class="btn-container">
+                    <a href="Nathan/index.html" class="btn" target="_blank">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Dynamic UI Tool -->
             <div class="card">
                 <h3>Dynamic UI Color Tool</h3>
+                <div class="screenshot-container">
+                    <img src="https://i.imgur.com/IYgCOj1.png" alt="Dynamic UI Color Tool Full Screen Layout" class="project-screenshot">
+                </div>
                 <p>An interactive JavaScript-based application that explores DOM manipulation and event handling for real-time state changes. This tool was designed to provide users with an intuitive, responsive interface for instant visual customization.</p>
-                <a href="NikoWeb.html" class="btn" target="_blank">View Code</a>
+                <div class="btn-container">
+                    <a href="NikoWeb.html" class="btn" target="_blank">View Code</a>
+                </div>
             </div>
+        </div>
+
+        <!-- AI Use Declaration Box at the Absolute Bottom -->
+        <div class="ai-box">
+            <strong>Generative AI Use Declaration:</strong> I utilized Generative AI to optimize the flexbox and CSS grid structures for standard responsive layouts, develop custom overflow-scrolling UI boxes to show entire page mockups without letterboxing or distortion, and apply smooth element transformations for cleaner interactive feedback rules matching engineering practice goals.
         </div>
     </div>
 
+    <!-- Background Animation Logic -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         const scene = new THREE.Scene();
@@ -139,6 +241,12 @@
             renderer.render(scene, camera);
         }
         animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
